@@ -31,7 +31,8 @@ const mode = computed(() => colorMode.value)
              title="LinkedIn">
             <Icon name="devicon:linkedin" size="20"/>
           </a>
-          <a :href="`https://stackoverflow.com/users/16781395/${mainBody.stackOverflow}`" class="hover:scale-110 transition-all ease-out"
+          <a :href="`https://stackoverflow.com/users/1878310/${mainBody.stackOverflow}`"
+             class="hover:scale-110 transition-all ease-out"
              target="_blank" title="Stackoverflow">
             <Icon name="logos:stackoverflow-icon" size="20"/>
           </a>
@@ -55,7 +56,7 @@ const mode = computed(() => colorMode.value)
       </div>
       <div class="justify-center mt-3 items-start flex">
         <div class="rounded-md w-20 sm:w-40 overflow-hidden">
-          <NuxtImg alt="Profile Picture" src="/rsz_1riyad.jpg" width="160px"/>
+          <NuxtImg alt="Profile Picture" src="/hendi.jpeg" width="160px"/>
         </div>
       </div>
     </div>
