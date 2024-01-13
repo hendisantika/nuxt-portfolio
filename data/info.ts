@@ -59,7 +59,7 @@ export const gitlab = {
 }
 
 export const stackOverflow = {
-    handle: '16781395/nur-riyad',
+    handle: '1878310/hendisantika',
     reputation: 1194,
     badge: {
         gold: 0,

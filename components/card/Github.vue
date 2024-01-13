@@ -5,7 +5,7 @@ import {github} from '@/data/info'
 <template>
   <a
       class=" overflow-hidden border dark:border-gray-700 rounded-xl shadow"
-      href="https://github.com/nurRiyad"
+      href="https://github.com/hendisantika"
       target="_blank"
   >
     <div
