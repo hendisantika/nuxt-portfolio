@@ -1,17 +1,19 @@
 export const mainBody = {
-    name: 'Al Asad Nur Riyad',
-    email: 'asadnurriyad@gmail.com',
-    about: 'Hi, I am a full-time software engineer building web applications for more than two years with Vue, Nuxt, Typescript, and Javascript. currently working at @AppsCode as Senior Software Engineer',
-    twitter: 'qdnvubp',
-    github: 'nurRiyad',
-    linkedIn: 'nur-riyad',
-    stackOverflow: 'nur-riyad',
+    name: 'Hendi Santika',
+    email: 'hendisantika@yahoo.co.id',
+    about: 'Hi, I am a full-time software engineer building backend & web applications for more than thirteen years ' +
+        'with Java, Spring Boot, PHP, Laravel, NodeJS, Vue, Nuxt, Angular, Typescript and Javascript.',
+    twitter: 'hendisantika',
+    github: 'hendisantika',
+    gitlab: 'hendisantika',
+    linkedIn: 'hendisantika',
+    stackOverflow: 'hendisantika',
 }
 
 export const workExperience = [
     {
-        title: 'Senior Software Engineer @AppsCode',
-        time: 'Aug 2023 - Present',
+        title: 'Senior Software Engineer @Pemuda PERSIS',
+        time: 'Jan 2016 - Present',
         left: false,
         list: [],
 
@@ -41,7 +43,15 @@ export const workExperience = [
 ]
 
 export const github = {
-    handle: 'nurRiyad',
+    handle: 'hendisantika',
+    stars: 165,
+    contribution: 2153,
+    pr: 393,
+    issue: 69,
+}
+
+export const gitlab = {
+    handle: 'hendisantika',
     stars: 165,
     contribution: 2153,
     pr: 393,
@@ -63,11 +73,11 @@ export const stackOverflow = {
 export const cp = [
     {
         name: 'Codechef',
-        handle: 'nur_riyad',
+        handle: 'hendisantika',
         rating: 1822,
         participate: 32,
         solved: 201,
-        link: 'https://www.codechef.com/users/nur_riyad',
+        link: 'https://www.codechef.com/users/hendisantika',
     },
     {
         name: 'Codeforces',
@@ -75,21 +85,21 @@ export const cp = [
         rating: 1545,
         participate: 76,
         solved: 864,
-        link: 'https://codeforces.com/profile/nur_riyad',
+        link: 'https://codeforces.com/profile/hendisantika',
     }, {
         name: 'AtCoder',
-        handle: 'nur_riyad',
+        handle: 'hendisantika',
         rating: 837,
         participate: 19,
         solved: 200,
-        link: 'https://atcoder.jp/users/nur_riyad',
+        link: 'https://atcoder.jp/users/hendisantika',
     }, {
         name: 'LeetCode',
-        handle: 'nur_riyad',
+        handle: 'hendisantika',
         rating: 1532,
         participate: 5,
         solved: 121,
-        link: 'https://leetcode.com/nur_riyad/',
+        link: 'https://leetcode.com/hendisantika/',
     },
 ]
 

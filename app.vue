@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-const description = 'Hi, I am a full-time software engineer building web applications for more than two years with Vue, Nuxt, Typescript, and Javascript.'
-const ogTitle = 'Al Asad Nur Riyad | Senior Software Engineer @AppsCode'
-const image
-    = 'https://www.nurriyad.xyz/social-card.webp'
-const mySite = 'https://www.nurriyad.xyz'
+const description = 'Hi, I am a full-time software engineer building backend & web applications for more than thirteen years ' +
+    'with Java, Spring Boot, PHP, Laravel, NodeJS, Vue, Nuxt, Angular, Typescript and Javascript.'
+const ogTitle = 'Hendi Santika | Senior Software Engineer @Pemuda PERSIS'
+const image = 'https://kominfo-ana-online-dev2.s3.ap-southeast-1.amazonaws.com/static/hendi.jpeg'
+const mySite = 'https://www.hendisantika.my.id'
 useHead({
   htmlAttrs: {
     lang: 'en',
@@ -64,9 +64,9 @@ useHead({
 // Generate OG Image
 defineOgImageComponent('About', {
   headline: 'Greetings 👋',
-  title: 'Al Asad Nur Riyad',
-  description: 'Senior Software Engineer @AppsCode',
-  link: '/rsz_1riyad.jpg',
+  title: 'Hendi Santika',
+  description: 'Senior Software Engineer @Pemuda PERSIS',
+  link: '/hendi.jpeg',
 })
 </script>
 
