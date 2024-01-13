@@ -13,13 +13,13 @@ export default defineNuxtConfig({
     ],
 
     site: {
-        url: 'https://www.nurriyad.xyz/',
+        url: 'https://www.s.id/hendisantika/',
     },
     app: {
         head: {
             charset: 'utf-16',
             viewport: 'width=device-width,initial-scale=1',
-            title: 'Al Asad Nur Riyad',
+            title: 'Hendi Santika',
             meta: [{name: 'description', content: 'My personal site.'}],
             link: [
                 {rel: 'icon', type: 'image/png', href: '/favicon.png'},

@@ -21,8 +21,8 @@ with [Nuxt3](https://nuxt.com), [Vue3](https://vuejs.org) & [TailwindCss](https:
 ## Preview
 
 <p align="center">
-  <a href="https://nurriyad.xyz" target="_blank">
-    <img width="1090" src="./assets/img/screely-1.png">
+  <a href="https://portofolio.hendisantika.my.id" target="_blank">
+    <img width="1090" src="./img/hendi.png">
     <br>
     Live Demo
   </a>
@@ -30,7 +30,7 @@ with [Nuxt3](https://nuxt.com), [Vue3](https://vuejs.org) & [TailwindCss](https:
 
 ## Demo
 
-https://nurriyad.xyz
+https://portofolio.hendisantika.my.id
 
 > Hosted on [Vercel](https://vercel.com/): `npm run build`
 
