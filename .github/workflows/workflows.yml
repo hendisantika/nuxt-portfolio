@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-artifacts
-          path: "/var/www/portofolio2/.output"
+          path: .output
 
       - name: Display structure of downloaded files
         run: ls -R
