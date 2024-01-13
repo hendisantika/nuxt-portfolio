@@ -19,16 +19,6 @@ jobs:
         run: |
           echo "$ENV_GITHUB" > .env_github
 
-      #      - uses: npm/action-setup@v4
-      #        name: Install npm
-      #        with:
-      #          version: 8
-      #          run_install: false
-      #      - name: Get npm store directory
-      #        shell: bash
-      #        run: |
-      #          echo "STORE_PATH=$(npm store path --silent)" >> $GITHUB_ENV
-
       - uses: actions/cache@v3
         name: Setup npm cache
         with:
@@ -36,7 +26,6 @@ jobs:
           key: ${{ runner.os }}-npm-store-${{ hashFiles('**/npm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-npm-store-
-
 
       - name: Install dependencies
         run: npm install --no-frozen-lockfile
@@ -48,19 +37,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-artifacts
-          #          path: ${{ github.sha }}.tar.gz
           path: .output
 
       - name: Download app-artifacts for distribution
         uses: actions/download-artifact@v4
         with:
           name: app-artifacts
-          #          path: ${{ github.sha }}.tar.gz
           path: .output
 
-      #      - run: tar.gz -zxvf ${{ github.sha }}.tar.gz .
-      #      - run: tar.gz -zxvf app-artifacts.tar.gz .
-      #      - run: zip -r app-artifacts.zip .output
       - name: Pull environment form variable
         run: echo "$ENV_GITHUB" > .env_github
 
@@ -71,24 +55,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          #          source: ${{ github.sha }}.tar.gz
-          #          source: "app-artifacts.zip"
           source: ".output"
-          target: "/var/www/portofolio/public/"
+          target: "/var/www/portofolio2/"
           strip_components: 1
-
-      #      - name: Extract archive and create directories
-      #        uses: appleboy/ssh-action@master
-      #        env:
-      #          GITHUB_SHA: ${{ github.sha }}
-      #        with:
-      #          host: ${{ secrets.SSH_HOST }}
-      #          username: ${{ secrets.SSH_USERNAME }}
-      #          key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #          port: ${{ secrets.SSH_PORT }}
-      #          envs: GITHUB_SHA
-      #          script: unzip -r app-artifacts.zip .
-
 
       - name: Deploy to server
         uses: garygrossgarten/github-action-scp@release
