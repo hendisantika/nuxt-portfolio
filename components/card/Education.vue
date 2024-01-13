@@ -1,0 +1,46 @@
+<script lang="ts" setup>
+interface Props {
+  name: string
+  session: string
+  gpa: string
+  institute: string
+  img: string
+}
+
+withDefaults(defineProps<Props>(), {
+  name: 'no name',
+  session: 'no session',
+  institute: 'no institute',
+  gpa: '-',
+  img: '-',
+})
+</script>
+
+<template>
+  <div
+      class=" overflow-hidden border dark:border-gray-700 rounded-xl shadow"
+  >
+    <div
+        class="flex flex-col justify-between gap-y-2  hover:scale-[1.005] ease-out transition-transform px-5 py-3"
+    >
+      <div class="flex flex-col gap-y-2">
+        <div class="flex items-center space-x-2">
+          <NuxtImg :src="`/images/${img}`" alt="iiuc" class="w-6 h-6"/>
+          <span class="text-base sm:text-xl font-medium">{{ name }}</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <Icon class="dark:text-cyan-500" name="icon-park-outline:school" size="20"/>
+          <p>From {{ institute }}</p>
+        </div>
+        <div class="flex items-center space-x-2">
+          <Icon class="dark:text-cyan-500" name="ph:calendar-check" size="20"/>
+          <p>Passing Year {{ session }}</p>
+        </div>
+        <div class="flex items-center space-x-2">
+          <Icon class="dark:text-cyan-500" name="material-symbols:school-outline" size="21"/>
+          <p> {{ gpa }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
