@@ -1,4 +1,4 @@
-name: Deploy Portofolio WEB APP
+name: Deploy Portfolio WEB APP
 on:
   push:
     branches:
@@ -16,18 +16,7 @@ jobs:
           node-version: 21
 
       - name: Pull environment form variable
-        run: |
-          echo "$ENV_GITHUB" > .env_github
-
-      #      - uses: npm/action-setup@v4
-      #        name: Install npm
-      #        with:
-      #          version: 8
-      #          run_install: false
-      #      - name: Get npm store directory
-      #        shell: bash
-      #        run: |
-      #          echo "STORE_PATH=$(npm store path --silent)" >> $GITHUB_ENV
+        run: echo "$ENV_GITHUB" > .env_github
 
       - uses: actions/cache@v3
         name: Setup npm cache
@@ -36,7 +25,6 @@ jobs:
           key: ${{ runner.os }}-npm-store-${{ hashFiles('**/npm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-npm-store-
-
 
       - name: Install dependencies
         run: npm install --no-frozen-lockfile
@@ -48,21 +36,19 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-artifacts
-          #          path: ${{ github.sha }}.tar.gz
           path: .output
 
       - name: Download app-artifacts for distribution
         uses: actions/download-artifact@v4
         with:
           name: app-artifacts
-          #          path: ${{ github.sha }}.tar.gz
-          path: .output
+          path: |
+            ${{ github.workspace }}
+            !.git/
+            /var/www/portofolio2/
 
-      #      - run: tar.gz -zxvf ${{ github.sha }}.tar.gz .
-      #      - run: tar.gz -zxvf app-artifacts.tar.gz .
-      #      - run: zip -r app-artifacts.zip .output
-      - name: Pull environment form variable
-        run: echo "$ENV_GITHUB" > .env_github
+      - name: Display structure of downloaded files
+        run: ls -R
 
       - name: Upload app-artifacts to remote folder
         uses: appleboy/scp-action@master
@@ -71,36 +57,21 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          #          source: ${{ github.sha }}.tar.gz
-          #          source: "app-artifacts.zip"
           source: ".output"
-          target: "/var/www/portofolio/public/"
+          target: "/var/www/portofolio2/.output"
           strip_components: 1
 
-      #      - name: Extract archive and create directories
-      #        uses: appleboy/ssh-action@master
-      #        env:
-      #          GITHUB_SHA: ${{ github.sha }}
+      #      - name: Deploy to server
+      #        uses: garygrossgarten/github-action-scp@release
       #        with:
+      #          local: .output/
+      #          remote: /var/www/portofolio2/.output/
       #          host: ${{ secrets.SSH_HOST }}
       #          username: ${{ secrets.SSH_USERNAME }}
-      #          key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #          port: ${{ secrets.SSH_PORT }}
-      #          envs: GITHUB_SHA
-      #          script: unzip -r app-artifacts.zip .
-
-
-      - name: Deploy to server
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: .output/
-          remote: /var/www/portofolio/.output/
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-          recursive: true
-          verbose: true
-          dotfiles: true
+      #          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+      #          recursive: true
+      #          verbose: true
+      #          dotfiles: true
 
       - name: Prepare NuxtJS 3 Web App
         run: |
@@ -108,8 +79,6 @@ jobs:
           echo "Run NuxtJS 3 Web App"
           echo "HENDI SANTIKA Portofolio"
           echo ":: =========================== ::"
-      #          npm install pm2
-      #          pm2 restart "PORTOFOLIO WEB APP"
 
       - name: Restart webapp via pm2
         uses: appleboy/ssh-action@master
@@ -118,8 +87,40 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          #          script: sh /var/www/portofolio/pm2.sh
-          #          script: "/home/deployer/.local/share/pnpm/pm2 restart \"PORTOFOLIO WEB APP\""
           script: |
             export PATH=$PATH:/home/deployer/.nvm/versions/node/v20.10.0/bin;
-            pm2 restart "PORTOFOLIO WEB APP"
+            pm2 restart "PORTOFOLIO2 WEB APP"
+#  deploy-dev:
+#    runs-on: ubuntu-latest
+#    needs: build-deploy
+#    steps:
+#      - name: Deploy to server
+#        uses: garygrossgarten/github-action-scp@release
+#        with:
+#          local: "app-artifacts.zip, ecosystem.config.cjs"
+#          remote: /var/www/portofolio2/test
+#          host: ${{ secrets.SSH_HOST }}
+#          username: ${{ secrets.SSH_USERNAME }}
+#          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+#          recursive: true
+#          verbose: true
+#          dotfiles: true
+#
+#      - name: Prepare NuxtJS 3 Web App
+#        run: |
+#          echo ":: =========================== ::"
+#          echo "Run NuxtJS 3 Web App"
+#          echo "HENDI SANTIKA Portofolio"
+#          echo ":: =========================== ::"
+#          pm2 start "PORTOFOLIO2 WEB APP"
+#
+#      - name: Restart webapp via pm2
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.SSH_HOST }}
+#          username: ${{ secrets.SSH_USERNAME }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          port: ${{ secrets.SSH_PORT }}
+#          script: |
+#            export PATH=$PATH:/home/deployer/.nvm/versions/node/v20.10.0/bin;
+#            pm2 restart "PORTOFOLIO2 WEB APP"
