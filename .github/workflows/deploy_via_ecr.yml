@@ -48,8 +48,8 @@ jobs:
 
       - name: Make docker-compose.yml file executable
         run: |
-          git update-index --chmod=+x docker-compose.yml
-          chmod +x docker-compose.yml
+          git update-index --chmod=+x docker-compose-ecr.yml
+          chmod +x docker-compose-ecr.yml
 
       - name: Copy docker-compose to server
         uses: garygrossgarten/github-action-scp@release
