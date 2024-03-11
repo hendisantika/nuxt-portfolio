@@ -270,7 +270,7 @@ jobs:
           allenvs: true
           script: |
             docker system prune -af
-            docker stop hendi-portofolio-ecr
-            docker rm hendi-portofolio-ecr
+            docker stop $CONTAINER_NAME
+            docker rm $CONTAINER_NAME
             docker pull $ECR_REGISTRY/$CONTAINER_NAME:$IMAGE_TAG
-            docker run -d --rm --name hendi-portofolio-ecr -p 3001:3001 $ECR_REGISTRY/$CONTAINER_NAME:$IMAGE_TAG
+            docker run -d --rm --name $CONTAINER_NAME -p 3001:3001 $ECR_REGISTRY/$CONTAINER_NAME:$IMAGE_TAG
